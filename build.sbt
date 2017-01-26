@@ -24,11 +24,11 @@ lazy val root = (project in file(".")).settings(
   pomIncludeRepository := { _ => false },
   publishTo <<= version {
     v =>
-      val nexus = "https://oss.sonatype.org/"
+	  val ossLocal = "http://localhost:8081/artifactory/"
       if (v.trim.endsWith("SNAPSHOT"))
-        Some("snapshots" at nexus + "content/repositories/snapshots")
+		Some("snapshots" at ossLocal + "libs-snapshot-local")
       else
-        Some("releases" at nexus + "service/local/staging/deploy/maven2")
+		Some("releases" at ossLocal + "libs-release-local")
   },
   pomExtra := {
     <url>http://nd4j.org/</url>
