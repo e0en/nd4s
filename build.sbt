@@ -24,7 +24,7 @@ lazy val root = (project in file(".")).settings(
   pomIncludeRepository := { _ => false },
   publishTo <<= version {
     v =>
-	  val ossLocal = "${ARTFACT_URL}"
+	  val ossLocal = "http://ec2-54-200-65-148.us-west-2.compute.amazonaws.com:8081/artifactory/"
       if (v.trim.endsWith("SNAPSHOT"))
 		Some("snapshots" at ossLocal + "libs-snapshot-local")
       else
